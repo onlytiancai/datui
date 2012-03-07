@@ -1,0 +1,7 @@
+name: shailiwu 
+version: 1
+cron:
+    - description: fetch liwus 
+    url: /liwus 
+    schedule: every 3 mins
+    timezone: Beijing

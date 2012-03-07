@@ -1,0 +1,19 @@
+$def with (liwus, current, config)
+$var title: $config['page_title']
+$var site_word:$config['site_word']
+$var site_name:$config['site_name']
+$var weibo_api_key:$config['weibo_api_key']
+$var current: $current
+<div class="items">
+$for liwu in liwus:
+    <div class="item">
+        <a class="image" userid="$liwu['UserSinaUserId']" itemid="$liwu['ItemId']" target="_blank" href="/show/$liwu['ItemId']">
+            <img src="$liwu['ThumbnailPic']" /></a>
+        <p class="text"><strong>$liwu['SinaUserName']</strong>:$liwu['Text']</p> 
+        <p class="bars">$liwu['CreateTime'] 
+            <a title="我喜欢这个$config['site_word']" class="like pull-right" href="javascript:;"><img src="/static/like.gif" > <span>$liwu['Hits']</span></a>
+            <a title="分享到新浪微博" class="share pull-right" href="javascript:;"><img src="/static/weibo_share.png" ></a>
+        </p>
+    </div>
+</div>
+<p id="page_nav" class="clear"><a href="/$current/2">2</a></p>

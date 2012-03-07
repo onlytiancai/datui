@@ -1,0 +1,68 @@
+$def with(content)
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <title>$content.title</title>
+        <meta name="description" content="在这里看看有没有喜欢的$content.site_word">
+        <meta name="author" content="蛙蛙王子">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <link rel="stylesheet" href="/static/main.css" type="text/css" media="screen" charset="utf-8">
+        <script type="text/javascript">
+            config =
+                {site_word:'$content.site_word',
+                 weibo_api_key:$content.weibo_api_key
+                }
+        </script>
+    </head>
+    <body>
+        <div class="topbar">
+            <div class="topbar-inner">
+                <a class="brand" href="/">$content.site_name</a>
+                <ul class="nav">
+                    <li \
+$if content.current == 'like':
+    class="active" \
+><a href="/">最受欢迎$content.site_word</a></li>
+                    <li \
+$if content.current == 'new':
+    class="active" \
+><a href="/new/">最新$content.site_word</a></li>
+                    <li \
+$if content.current == 'mylike':
+    class="active" \
+><a href="/me/">我喜欢的$content.site_word</a></li>
+                </ul>
+                <p class="pull-right">
+                <a href="javascript:;" class="weibo_login"><img src="/static/weibo_login.png" /></a>
+                </p>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="content">
+                $:content
+            </div>    
+            <footer>
+            <p>© Wawasoft 2012
+            <a href="http://weibo.com/onlytiancai">反馈意见</a> 友情链接：
+            <a href="http://80yy.sinaapp.com/">80后小学语文</a>
+            <a href="http://sae.sina.com.cn" target="_blank"><img src="http://static.sae.sina.com.cn/image/poweredby/poweredby.png" title="Powered by Sina App Engine"></a>
+            <script type="text/javascript">
+                var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+                document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F6a7113d2a1c0bb3efd393e25893b9498' type='text/javascript'%3E%3C/script%3E"));
+            </script>
+            </p>
+            </footer>
+        </div>
+        <script src="/static/json2.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/static/jquery-1.6.3.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/static/jquery.masonry.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/static/jquery.infinitescroll.js" type="text/javascript" charset="utf-8"></script>
+        <script src=" http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=$content.weibo_api_key" type="text/javascript" charset="utf-8"></script>
+        <script src="/static/main.js" type="text/javascript" charset="utf-8"></script>
+    </body>
+</html>

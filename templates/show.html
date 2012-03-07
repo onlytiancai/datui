@@ -1,0 +1,29 @@
+$def with (liwu, liwus, config)
+$var title: $liwu['SinaUserName']的$config['site_word']-$config['page_title']
+$var site_word:$config['site_word']
+$var site_name:$config['site_name']
+$var weibo_api_key:$config['weibo_api_key']
+$var current: '' 
+<div class="item" style="width:500px">
+    <a class="image" userid="$liwu['UserSinaUserId']" itemid="$liwu['ItemId']" target="_blank" 
+        href="http://api.t.sina.com.cn/$liwu['UserSinaUserId']/statuses/$liwu['ItemId']?source=3355748460">
+        <img src="$liwu['BmiddlePic']" /></a>
+    <p class="text"><strong>$liwu['SinaUserName']</strong>:$liwu['Text']</p> 
+    <p class="bars">$liwu['CreateTime'] 
+        <a title="我喜欢这个$config['site_word']" class="like pull-right" href="javascript:;"><img src="/static/like.gif" ><span> $liwu['Hits']</span></a>
+        <a title="分享到新浪微博" class="share pull-right" href="javascript:;"><img src="/static/weibo_share.png" ></a>
+    </p>
+</div>
+<h2 class="clear">其它受欢迎的$config['site_word']</h2>
+<div class="items">
+$for liwu in liwus:
+    <div class="item">
+        <a class="image" userid="$liwu['UserSinaUserId']" itemid="$liwu['ItemId']" target="_blank" href="/show/$liwu['ItemId']">
+            <img src="$liwu['ThumbnailPic']" /></a>
+        <p class="text"><strong>$liwu['SinaUserName']</strong>:$liwu['Text']</p> 
+        <p class="bars">$liwu['CreateTime'] 
+            <a title="我喜欢这个$config['site_word']" class="like pull-right" href="javascript:;"><img src="/static/like.gif" > <span>$liwu['Hits']</span> </a>
+            <a title="分享到新浪微博" class="share pull-right" href="javascript:;"><img src="/static/weibo_share.png" ></a>
+        </p>
+    </div>
+</div>
